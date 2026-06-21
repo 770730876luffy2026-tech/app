@@ -167,16 +167,16 @@ class ReviewController extends ChangeNotifier {
       _refundImage = [];
       reviewImages = [];
     }else {
-      final _imageFile = await ImageValidationHelper.validateAndPickImage(
+      final imageFile = await ImageValidationHelper.validateAndPickImage(
         source: ImageSource.gallery,
         context: Get.context!,
       );
 
-      if (_imageFile != null) {
+      if (imageFile != null) {
         if (fromReview) {
-          reviewImages.add(File(_imageFile.path));
+          reviewImages.add(File(imageFile.path));
         }else{
-          _refundImage.add(_imageFile);
+          _refundImage.add(imageFile);
         }
       }
     }

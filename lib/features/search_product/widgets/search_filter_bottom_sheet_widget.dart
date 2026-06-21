@@ -29,8 +29,8 @@ class SearchFilterBottomSheet extends StatefulWidget {
 class SearchFilterBottomSheetState extends State<SearchFilterBottomSheet> {
   RangeValues currentRangeValues = const RangeValues(0, 0);
   IndicatorRangeSliderThumbShape indicatorRangeSliderThumbShape = IndicatorRangeSliderThumbShape(start: 0, end: 0);
-  TextEditingController? _minController = TextEditingController();
-  TextEditingController? _maxController = TextEditingController();
+  final TextEditingController? _minController = TextEditingController();
+  final TextEditingController? _maxController = TextEditingController();
   final SearchProductController? searchProductController = Provider.of<SearchProductController>(Get.context!, listen: false);
 
   final _debounce = DebounceHelper(milliseconds: 500);

@@ -24,7 +24,6 @@ import 'package:flutter_sixvalley_ecommerce/common/basewidget/paginated_list_vie
 import 'package:flutter_sixvalley_ecommerce/features/chat/widgets/chat_shimmer_widget.dart';
 import 'package:flutter_sixvalley_ecommerce/features/chat/widgets/file_widget_helper.dart';
 import 'package:flutter_sixvalley_ecommerce/features/chat/widgets/message_bubble_widget.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/foundation.dart' as foundation;

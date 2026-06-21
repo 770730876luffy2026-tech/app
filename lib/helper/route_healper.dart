@@ -192,13 +192,13 @@ class RouterHelper {
     bool? isBilling,
     AddressModel? address,
   }) {
-    String? _address =  address !=null ? base64Url.encode(utf8.encode(jsonEncode(address.toJson()))) : null;
+    String? address0 =  address !=null ? base64Url.encode(utf8.encode(jsonEncode(address.toJson()))) : null;
 
     final params = <String, String>{};
     if (isEnableUpdate != null) params['isEnableUpdate'] = isEnableUpdate.toString();
     if (fromCheckout != null) params['fromCheckout'] = fromCheckout.toString();
     if (isBilling != null) params['isBilling'] = isBilling.toString();
-    if (address != null) params['address'] = _address!;
+    if (address != null) params['address'] = address0!;
 
     final query = params.entries.map((e) => '${e.key}=${e.value}').join('&');
 
@@ -231,17 +231,17 @@ class RouterHelper {
     bool? isAllProduct
   }) {
 
-    String? _subCategory =  subCategory !=null ? base64Url.encode(utf8.encode(jsonEncode(subCategory.toJson()))) : null;
-    String? _category =  categoryModel !=null ? base64Url.encode(utf8.encode(jsonEncode(categoryModel.toJson() ))) : null;
+    String? subCategory0 =  subCategory !=null ? base64Url.encode(utf8.encode(jsonEncode(subCategory.toJson()))) : null;
+    String? category =  categoryModel !=null ? base64Url.encode(utf8.encode(jsonEncode(categoryModel.toJson() ))) : null;
 
     final params = <String, String>{};
     if (isBrand != null) params['is_brand'] = isBrand.toString();
     if (id != null) params['id'] = id.toString();
     if (name != null) params['name'] = Uri.encodeComponent(name);
     if (image != null) params['image'] = Uri.encodeComponent(image);
-    if (subCategory != null) params['subCategory'] = _subCategory!;
+    if (subCategory != null) params['subCategory'] = subCategory0!;
     if (isInsideSubSubCategory != null) params['isInsideSubSubCategory'] = isInsideSubSubCategory.toString();
-    if (categoryModel != null) params['categoryModel'] = _category!;
+    if (categoryModel != null) params['categoryModel'] = category!;
     if (isAllProduct != null) params['isAllProduct'] = isAllProduct.toString();
     final query = params.entries.map((e) => '${e.key}=${e.value}').join('&');
     return _navigateRoute('$brandCategoryScreen${query.isNotEmpty ? '?$query' : ''}', route: action);
@@ -676,12 +676,12 @@ class RouterHelper {
     RouteAction? action,
     List<ReviewModel>? reviewList,
   }) {
-    String? _reviews = reviewList != null
+    String? reviews = reviewList != null
         ? base64Url.encode(utf8.encode(jsonEncode(reviewList.map((e) => e.toJson()).toList())))
         : null;
 
     final params = <String, String>{};
-    if (_reviews != null) params['reviews'] = _reviews;
+    if (reviews != null) params['reviews'] = reviews;
 
     final query = params.entries.map((e) => '${e.key}=${e.value}').join('&');
     return _navigateRoute('$reviewScreen${query.isNotEmpty ? '?$query' : ''}', route: action);
@@ -879,7 +879,7 @@ class RouterHelper {
     SplashScreen() : _isMaintenance(Provider.of<SplashController>(context, listen: false).configModel!) ? const MaintenanceScreen() : route;
   }
 
-  static _isMaintenance(ConfigModel configModel) {
+  static bool _isMaintenance(ConfigModel configModel) {
     if(configModel.maintenanceModeData?.maintenanceStatus == 1) {
       if((configModel.maintenanceModeData?.selectedMaintenanceSystem?.customerApp  == 1)) {
         return true;
@@ -985,8 +985,8 @@ class RouterHelper {
           final qp = state.uri.queryParameters;
           AddressModel? address;
           if (qp['address'] != null) {
-            String _address =  utf8.decode(base64Url.decode('${state.uri.queryParameters['address']?.replaceAll(' ', '+')}'));
-            address = AddressModel.fromJson(jsonDecode(_address));
+            String address =  utf8.decode(base64Url.decode('${state.uri.queryParameters['address']?.replaceAll(' ', '+')}'));
+            address = AddressModel.fromJson(jsonDecode(address));
           }
           return AddNewAddressScreen(
             isEnableUpdate: qp['isEnableUpdate'] == 'true',

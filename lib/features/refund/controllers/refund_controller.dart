@@ -41,13 +41,13 @@ class RefundController with ChangeNotifier {
       _imageFile = null;
       refundImage = [];
     } else {
-      final _imageFile = await ImageValidationHelper.validateAndPickImage(
+      final imageFile = await ImageValidationHelper.validateAndPickImage(
         source: ImageSource.gallery,
         context: Get.context!,
       );
 
-      if (_imageFile != null && File(_imageFile.path).existsSync()) {
-         refundImage.add(_imageFile);
+      if (imageFile != null && File(imageFile.path).existsSync()) {
+         refundImage.add(imageFile);
       }
     }
     notifyListeners();
